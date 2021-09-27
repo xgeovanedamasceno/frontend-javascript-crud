@@ -2,3 +2,135 @@
   box-sizing: border-box;
   font-family: 'IBM Plex Sans', sans-serif;
 }
+
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  display: none;
+}
+
+.modal.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  position: relative;
+  width: 500px;
+  height: 350px;
+  margin: 15% auto;
+  animation-name: modal;
+  animation-duration: 0.4s;
+}
+
+@keyframes modal {
+  from {
+    opacity: 0;
+    top: -300px;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+#modal-close {
+  width: 40px;
+  height: 40px;
+  top: -15px;
+  right: -15px;
+  position: absolute;
+  border: 1px solid #444;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3);
+  background-color: #ff1776;
+  font-size: 1.2rem;
+  color: white;
+  font-weight: bold;
+  margin: 0;
+  cursor: pointer;
+}
+
+.modal label {
+  font-weight: bold;
+}
+
+.modal button[type='submit'] {
+  display: block;
+  border-radius: 4px;
+}
+
+.modal-content > * {
+  margin: 10px 0px;
+}
+
+button {
+  border-style: none;
+  padding: 10px;
+  background-color: #474fff;
+  color: white;
+}
+
+body {
+  background-color: #f8f9fa;
+  background-color: white;
+}
+
+#app {
+  background-color: #f8f9fa;
+  background-color: white;
+}
+
+#brand {
+  width: 100%;
+  padding: 20px;
+  background-color: #f8f9fa;
+  background-color: white;
+
+  color: #444;
+  padding-left: 100px;
+}
+
+#menu-dash {
+  width: 900px;
+  margin-top: 50px;
+  margin-left: 100px;
+}
+
+#main-dash {
+  background-color: white;
+  background-color: #f8f9fa;
+
+  width: 900px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#main-dash {
+  width: 800px;
+  padding: 20px;
+  border: 2px solid #7000f2;
+  margin-top: 10px;
+  margin-left: 100px;
+  background-color: #f8f9fa;
+}
+
+#summary {
+  margin: 10px 0;
+  padding: 20px;
+  border: 2px solid #0d55ff;
+  background-color: #f8f9fa;
+}
+
+#summary * {
+  margin: 10px 0;
+}
