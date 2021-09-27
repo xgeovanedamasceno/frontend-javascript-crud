@@ -68,54 +68,55 @@
           <h1>Nova Transação</h1>
           <span>Data: </span><span id="date"></span>
         </div>
-      </div>
 
-      <div id="inputs-form">
-        <span id="description-input">
-          <label for="description">Descrição</label>
-          <input type="text" data-flag="new" name="description" id="description" class="form-field" required>
-        </span>
 
-        <span id="amount-input">
-          <label for="amount">Valor</label>
-          <input type="number" min="1" name="amount" id="amount" class="form-field" required>
-        </span>
+        <div id="inputs-form">
+          <span id="description-input">
+            <label for="description">Descrição</label>
+            <input type="text" data-flag="new" name="description" id="description" class="form-field" required>
+          </span>
 
-        <span id="type-transaction-input">
-          <label for="type-transaction">Tipo de transação</label>
-          <select name="type-transaction" id="select-type-transaction">
-            <option disabled selected value>Selecione</option>
-            <option value="income">Receita</option>
-            <option value="expense">Despesa</option>
-          </select>
-        </span>
+          <span id="amount-input">
+            <label for="amount">Valor</label>
+            <input type="number" min="1" name="amount" id="amount" class="form-field" required>
+          </span>
 
-        <span id="income-category-input">
-          <label for="income-category">Tipo de receita</label>
-          <select name="income-category" id="income-category" required>
-            <option disabled selected value>Selecione</option>
-            <option value="salary">Salário</option>
-            <option value="bonus">Bônus</option>
-            <option value="roi">Ações</option>
-            <option value="rent-roi">Renda de alugueis</option>
-          </select>
-        </span>
+          <span id="type-transaction-input">
+            <label for="type-transaction">Tipo de transação</label>
+            <select name="type-transaction" id="select-type-transaction">
+              <option disabled selected value>Selecione</option>
+              <option value="income">Receita</option>
+              <option value="expense">Despesa</option>
+            </select>
+          </span>
 
-        <span id="expense-category-input">
-          <label for="expense-category">Tipo de despesa</label>
-          <select name="expense-category" id="expense-category" required>
-            <option disabled selected value>Selecione</option>
-            <option value="food">Alimentação</option>
-            <option value="home">Moradia</option>
-            <option value="health">Saúde</option>
-            <option value="auto">Transporte</option>
-            <option value="freetime">Lazer</option>
-          </select>
-        </span>
+          <span id="income-category-input">
+            <label for="income-category">Tipo de receita</label>
+            <select name="income-category" id="income-category" required>
+              <option disabled selected value>Selecione</option>
+              <option value="salary">Salário</option>
+              <option value="bonus">Bônus</option>
+              <option value="roi">Ações</option>
+              <option value="rent-roi">Renda de alugueis</option>
+            </select>
+          </span>
 
-        <div id="form-buttons">
-          <button id="save" type="submit" name="save">Salvar Transação</button>
-          <button id="cancel" type="submit" name="cancel">Cancelar</button>
+          <span id="expense-category-input">
+            <label for="expense-category">Tipo de despesa</label>
+            <select name="expense-category" id="expense-category" required>
+              <option disabled selected value>Selecione</option>
+              <option value="food">Alimentação</option>
+              <option value="home">Moradia</option>
+              <option value="health">Saúde</option>
+              <option value="auto">Transporte</option>
+              <option value="freetime">Lazer</option>
+            </select>
+          </span>
+
+          <div id="form-buttons">
+            <button id="save" type="submit" name="save">Salvar Transação</button>
+            <button id="cancel" type="submit" name="cancel">Cancelar</button>
+          </div>
         </div>
       </div>
     </form>
