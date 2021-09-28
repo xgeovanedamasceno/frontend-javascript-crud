@@ -1,6 +1,6 @@
 export const bufferTransaction = {
   description: null,
-  value: null,
+  valueTransaction: null,
   type: null,
   category: null,
 }

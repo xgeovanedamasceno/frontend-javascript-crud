@@ -76,19 +76,19 @@
         <div id="inputs-form">
           <span id="description">
             <label for="description">Descrição</label>
-            <input type="text" data-flag="new" name="description" id="input-description" class="form-field">
+            <input type="text" data-flag="new" name="description" id="input-description" class="form-field" required>
           </span>
 
           <span id="amount">
             <label for="amount">Valor</label>
-            <input type="number" min="1" name="amount" id="input-amount" class="form-field">
+            <input type="number" min="1" name="amount" id="input-amount" class="form-field" required>
           </span>
         </div>
 
         <div id="selects-form">
           <span id="type-transaction-form">
             <label for="type-transaction">Tipo de transação</label>
-            <select name="type-transaction" id="select-type-transaction">
+            <select name="type-transaction" id="select-type-transaction" required>
               <option disabled selected value>Selecione</option>
               <option value="income">Receita</option>
               <option value="expense">Despesa</option>
@@ -97,9 +97,9 @@
 
           <span id="select-category-transaction">
 
-            <span id="income-category-form" class="income-category active">
+            <span id="income-category-form" class="income-category">
               <label for="income-category">Tipo de receita</label>
-              <select name="income-category" id="select-income-category">
+              <select name="income-category" id="select-income-category" class="category-transaction">
                 <option disabled selected value>Selecione</option>
                 <option value="salary">Salário</option>
                 <option value="bonus">Bônus</option>
@@ -110,7 +110,7 @@
 
             <span id="expense-category-form" class="expense-category">
               <label for="expense-category">Tipo de despesa</label>
-              <select name="expense-category" id="select-expense-category">
+              <select name="expense-category" id="select-expense-category" class="category-transaction">
                 <option disabled selected value>Selecione</option>
                 <option value="food">Alimentação</option>
                 <option value="home">Moradia</option>

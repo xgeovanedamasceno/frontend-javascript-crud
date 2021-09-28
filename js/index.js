@@ -16,6 +16,6 @@ modal.outModal();
 document.getElementById('save').addEventListener('click', readFieldsForm);
 document.getElementById('select-type-transaction').addEventListener('change', checkSelectForm);
 
-document.getElementById('select-category-transaction').querySelector('.active').addEventListener('change', getCategoryForm);
+// document.getElementById('select-category-transaction').querySelector('.active').addEventListener('click', getCategoryForm);
 
 updateTable();
