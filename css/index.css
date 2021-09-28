@@ -27,7 +27,7 @@
   position: relative;
   width: 500px;
   height: 350px;
-  margin: 15% auto;
+  /* margin: 15% auto; */
   animation-name: modal;
   animation-duration: 0.4s;
 }
@@ -63,13 +63,20 @@
   font-weight: bold;
 }
 
-.modal button[type='submit'] {
-  display: block;
-  border-radius: 4px;
+#inputs-form {
+  margin: 20px 0;
 }
 
-.modal-content > * {
-  margin: 10px 0px;
+#select-forms {
+}
+
+#form-buttons {
+  margin: 20px 0;
+}
+
+#form-buttons button {
+  margin: 0 5px;
+  width: 150px;
 }
 
 button {
