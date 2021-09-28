@@ -1,12 +1,25 @@
 export default function checkSelectForm(event) {
   const { value } = event.target;
+  console.log(value);
+  const incomeSelect = document.querySelector('.income-category');
+  const expenseSelect = document.querySelector('.expense-category');
+
+
   if (value === 'income') {
-    document.querySelector('.expense-category').classList.remove('active');
-    document.querySelector('.income-category').classList.add('active');
+    expenseSelect.classList.remove('active');
+    expenseSelect.removeAttribute('required');
+
+    incomeSelect.classList.add('active');
+    incomeSelect.setAttribute('required', '');
   }
   if (value === 'expense') {
-    document.querySelector('.income-category').classList.remove('active');
-    document.querySelector('.expense-category').classList.add('active');
+    incomeSelect.classList.remove('active');
+    incomeSelect.removeAttribute('required');
+
+    expenseSelect.classList.add('active');
+    expenseSelect.setAttribute('required', '');
+
+
   }
 
 }
