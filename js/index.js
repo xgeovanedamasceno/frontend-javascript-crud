@@ -1,3 +1,4 @@
-import setModal from './set-modal.js';
+import setModal from "./modules/setModal.js";
+
 
 setModal();
