@@ -141,3 +141,19 @@ body {
 #summary * {
   margin: 10px 0;
 }
+
+#income-category-form {
+  display: none;
+}
+
+#income-category-form.active {
+  display: block;
+}
+
+#expense-category-form {
+  display: none;
+}
+
+#expense-category-form.active {
+  display: block;
+}
