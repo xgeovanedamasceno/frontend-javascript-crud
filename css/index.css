@@ -141,3 +141,19 @@ body {
 #summary * {
   margin: 10px 0;
 }
+
+.income-category {
+  display: none;
+}
+
+.income-category.active {
+  display: block;
+}
+
+.expense-category {
+  display: none;
+}
+
+.expense-category.active {
+  display: block;
+}
