@@ -9,8 +9,8 @@ import HandleModal from "./modules/HandleModal.js";
 
 const modal = new HandleModal('.modal','active');
 modal.open('#new-transaction');
-// modal.close('.modal-close');
-// modal.outModalClose();
+modal.close('.modal-close');
+modal.outModal();
 
 
 document.getElementById('save').addEventListener('click', readFieldsForm);
