@@ -142,18 +142,18 @@ body {
   margin: 10px 0;
 }
 
-#income-category-form {
+.income-category {
   display: none;
 }
 
-#income-category-form.active {
+.income-category.active {
   display: block;
 }
 
-#expense-category-form {
+.expense-category {
   display: none;
 }
 
-#expense-category-form.active {
+.expense-category.active {
   display: block;
 }
