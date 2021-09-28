@@ -20,7 +20,7 @@
 
     <div id="menu-dash">
       <span>
-        <button id="add-transaction" name="add-transaction">Nova Transação</button>
+        <button id="new-transaction" name="new-transaction">Nova Transação</button>
       </span>
     </div>
 
@@ -66,7 +66,7 @@
 
     <form id="form-dash" class="modal">
       <div class="modal-content">
-        <button id="modal-close">X</button>
+        <button id="modal-close" type="button">X</button>
         <div class="modal-header">
           <h1>Nova Transação</h1>
           <span>Data: </span><span id="date"></span>
@@ -74,17 +74,19 @@
 
 
         <div id="inputs-form">
-          <span id="description-input">
+          <span id="description">
             <label for="description">Descrição</label>
-            <input type="text" data-flag="new" name="description" id="description" class="form-field" required>
+            <input type="text" data-flag="new" name="description" id="input-description" class="form-field">
           </span>
 
-          <span id="amount-input">
+          <span id="amount">
             <label for="amount">Valor</label>
-            <input type="number" min="1" name="amount" id="amount" class="form-field" required>
+            <input type="number" min="1" name="amount" id="input-amount" class="form-field">
           </span>
+        </div>
 
-          <span id="type-transaction-input">
+        <div id="selects-form">
+          <span id="type-transaction-form">
             <label for="type-transaction">Tipo de transação</label>
             <select name="type-transaction" id="select-type-transaction">
               <option disabled selected value>Selecione</option>
@@ -93,37 +95,43 @@
             </select>
           </span>
 
-          <span id="income-category-input">
-            <label for="income-category">Tipo de receita</label>
-            <select name="income-category" id="income-category" required>
-              <option disabled selected value>Selecione</option>
-              <option value="salary">Salário</option>
-              <option value="bonus">Bônus</option>
-              <option value="roi">Ações</option>
-              <option value="rent-roi">Renda de alugueis</option>
-            </select>
-          </span>
+          <span id="select-category-transaction">
+            <span id="income-category-form">
+              <label for="income-category">Tipo de receita</label>
+              <select name="income-category" id="select-income-category">
+                <option disabled selected value>Selecione</option>
+                <option value="salary">Salário</option>
+                <option value="bonus">Bônus</option>
+                <option value="roi">Ações</option>
+                <option value="rent-roi">Renda de alugueis</option>
+              </select>
+            </span>
 
-          <span id="expense-category-input">
-            <label for="expense-category">Tipo de despesa</label>
-            <select name="expense-category" id="expense-category" required>
-              <option disabled selected value>Selecione</option>
-              <option value="food">Alimentação</option>
-              <option value="home">Moradia</option>
-              <option value="health">Saúde</option>
-              <option value="auto">Transporte</option>
-              <option value="freetime">Lazer</option>
-            </select>
+            <span id="expense-category-form">
+              <label for="expense-category">Tipo de despesa</label>
+              <select name="expense-category" id="select-expense-category">
+                <option disabled selected value>Selecione</option>
+                <option value="food">Alimentação</option>
+                <option value="home">Moradia</option>
+                <option value="health">Saúde</option>
+                <option value="auto">Transporte</option>
+                <option value="freetime">Lazer</option>
+              </select>
+            </span>
           </span>
+        </div>
 
-          <div id="form-buttons">
-            <button id="save" type="submit" name="save">Salvar Transação</button>
-            <button id="cancel" type="submit" name="cancel">Cancelar</button>
-          </div>
+        <div id="form-buttons">
+          <button id="save" name="save">Salvar Transação</button>
+          <button id="cancel" type="button" name="cancel">Cancelar</button>
         </div>
       </div>
-    </form>
+  </div>
+  </form>
   </div> <!-- end app  -->
+
+  <script type="module" src="js/index.js"></script>
+
 </body>
 
 </html>
