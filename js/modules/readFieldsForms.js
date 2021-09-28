@@ -1,9 +1,6 @@
-import Transaction from "./modules/classes/Transaction.js";
-import HandleStorage from "./modules/HandleStorage.js";
-import { bufferTransaction } from "./modules/objects/bufferTransaction.js";
-
-
-
+import Transaction from "./classes/Transaction.js";
+import HandleStorage from "./HandleStorage.js";
+import { bufferTransaction } from "./objects/bufferTransaction.js";
 
 export default function readFieldsForm() {
 
