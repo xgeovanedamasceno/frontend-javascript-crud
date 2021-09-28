@@ -19,8 +19,4 @@ export default function setModal() {
   document.querySelector('#modal-close').addEventListener('click', closeModal);
   document.querySelector('.modal').addEventListener('click',outModalClose);
  
-}
-
-
- 
-  
+}  

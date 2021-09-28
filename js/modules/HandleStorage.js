@@ -1,6 +1,6 @@
 class HandleStorage {
   constructor() {
-    this.dbTransaction;
+    this.dbTransaction = [];
   }
 
   create(transaction) {
@@ -10,7 +10,7 @@ class HandleStorage {
   }
   
   read() {
-    return JSON.parse(localStorage.getItem('dbTransaction')) ?? [];
+    return JSON.parse(localStorage.getItem('dbTransaction')) ?? this.dbTransaction;
   }
   
   update(index, transaction) {
