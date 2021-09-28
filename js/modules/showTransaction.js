@@ -1,3 +1,5 @@
+import addEventListenerTo from "./addEventListenerTo.js";
+
 export default function showTransaction(transaction, index) {
   const tableDash = document.querySelector('#report  tbody');
   const newTransaction = document.createElement('tr');
