@@ -1,4 +1,4 @@
-import Modal from "./Modal.js";
+import setModal from "./set-modal.js";
 
-const modal = new Modal('#new-transaction', ['#modal-close', '#save', '#cancel'],'.modal');
-modal.setEvents();
+
+setModal();
