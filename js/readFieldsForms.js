@@ -1,17 +1,23 @@
 import Transaction from "./modules/classes/Transaction.js";
 import HandleStorage from "./modules/HandleStorage.js";
+import { bufferTransaction } from "./modules/objects/bufferTransaction.js";
+
+
+
 
 export default function readFieldsForm() {
-    const description = document.getElementById('input-description').value;
-    const valueTransaction = document.getElementById('input-amount').value;
-    const type = document.getElementById('select-type-transaction').value;
-    const category = document.getElementById('select-category-transaction').firstChild.value;
-    const index = document.getElementById('input-description').dataset.flag;
 
-    if (index === 'new') {
-      const date = document.getElementById('date').value;
-      const transaction = new Transaction(date, description, valueTransaction, type, category);
-      const storage = new HandleStorage();
-      storage.create(transaction);
-    }
+  bufferTransaction.description = document.getElementById('input-description').value;
+  bufferTransaction.value = document.getElementById('input-amount').value;
+  bufferTransaction.type =  document.getElementById('select-type-transaction').value;
+        
+  const index = document.getElementById('input-description').dataset.flag;
+
+  if (index === 'new') {
+    const date = '28/09/2021';
+    const { description, valueTransaction, type, category } = bufferTransaction;
+    const transaction = new Transaction(date, description, valueTransaction, type, category);
+    const storage = new HandleStorage();
+    storage.create(transaction);
+  }
 }
