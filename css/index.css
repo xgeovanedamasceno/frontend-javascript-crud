@@ -63,13 +63,20 @@
   font-weight: bold;
 }
 
-.modal button[type='submit'] {
-  display: block;
-  border-radius: 4px;
+#inputs-form {
+  margin: 20px 0;
 }
 
-.modal-content > * {
-  margin: 10px 0px;
+#select-forms {
+}
+
+#form-buttons {
+  margin: 20px 0;
+}
+
+#form-buttons button {
+  margin: 0 5px;
+  width: 150px;
 }
 
 button {
