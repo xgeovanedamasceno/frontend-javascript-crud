@@ -57,6 +57,10 @@ export default class HandleView {
   
   }
 
+  checkSelectFilter(e) {
+    const value = e.target.value;
+  }
+
   clearFieldsForm() {
       const formFields = document.querySelectorAll('.form-field');
       formFields.forEach(field => {
@@ -106,11 +110,9 @@ export default class HandleView {
     const currentBalance = handleTransaction.getBalance();
     const totalIncomes = handleTransaction.getIncomes();
     const totalExpenses = handleTransaction.getExpenses();
-    document.querySelector('#current-balance').innerHTML = `Saldo Atual: R$ ${currentBalance}`;
-    document.querySelector('#total-incomes').innerHTML = `Total de Receitas: R$ ${totalIncomes}`;
-    document.querySelector('#total-expenses').innerHTML = `Total de Despesas: R$ ${totalExpenses}`;
-
-
+    document.querySelector('#current-balance').innerText = `Saldo Atual: R$ ${currentBalance}`;
+    document.querySelector('#total-incomes').innerText = `Total de Receitas: R$ ${totalIncomes}`;
+    document.querySelector('#total-expenses').innerText = `Total de Despesas: R$ ${totalExpenses}`;
   }
   
   
@@ -201,7 +203,6 @@ export default class HandleView {
   }
   
   setModal(listener) {
-  
     document.querySelector(listener).addEventListener('click',this.showModal);
   }
 

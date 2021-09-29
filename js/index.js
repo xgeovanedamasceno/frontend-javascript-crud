@@ -11,7 +11,9 @@ handleView.updateSummary();
 
 
 handleView.updateTable();
+
 document.getElementById('save').addEventListener('click', handleView.readFieldsForm);
 document.getElementById('select-type-transaction')
 .addEventListener('change', handleView.checkSelectForm);
 
+document.querySelector('#transaction-filter').addEventListener('click', handleView.checkSelectFilter);
