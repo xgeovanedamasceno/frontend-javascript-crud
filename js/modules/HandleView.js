@@ -13,6 +13,7 @@ export default class HandleView {
   constructor() {
     this.editTransaction = this.editTransaction.bind(this);
     this.showTransaction = this.showTransaction.bind(this);
+    this.readFieldsForm = this.readFieldsForm.bind(this);
 
   }
   
@@ -104,6 +105,8 @@ export default class HandleView {
       const date = getStringDate();
       const { description, valueTransaction, type, category } = bufferTransaction;
       handleTransaction.saveTransaction(date, description, valueTransaction, type, category);
+      console.log(this);
+      this.updateTable();
     }
   }
 
