@@ -70,7 +70,6 @@ export default class HandleView {
   }
 
   deleteTransaction(e) {
-    console.log(this);
     const index = e.target.id;
     const handleTransaction = new HandleTransaction();
     handleTransaction.deleteTransaction(index);
@@ -185,13 +184,6 @@ export default class HandleView {
     e.preventDefault();
     document.querySelector('.modal').classList.remove('active');
   }
-  
-  
-  
-  // outCloseModal() {
-  //   if(e.target === this) this.hiddenModal(e);
-  //   document.querySelector('.modal').addEventListener('click', this.hiddenModal);
-  // }
   
   unSetModal(listener) {
     document.querySelector(listener).addEventListener('click', this.hiddenModal);
