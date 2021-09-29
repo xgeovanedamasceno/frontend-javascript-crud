@@ -56,18 +56,27 @@ export default class HandleView {
 
 
   editTransaction(event) {
-    console.log(this);
     const index = event.target.id;
+    console.log(index);
     document.querySelector('#new-transaction').removeEventListener('click', openModal);
 
+    const handleTransaction = new HandleTransaction();
+    const specificTransaction = handleTransaction.getSpecificTransaction(index);
 
-    this.showModal('#edit');
-
-    // // const storage = new HandleStorage();
-    // // const {date, description, value, type, category} = storage.read()[index];
-
-    // const transaction = new Transaction(date, description, value, type, category);
+    console.log(specificTransaction);
+    this.fillFieldsForm(specificTransaction, index);
   }
+
+  fillFieldsForm(transaction, index) {
+    const {date, description, value, type, category } = transaction;
+    document.getElementById('input-description').dataset.flag = index;
+    document.getElementById('date').innerHTML = date;
+    document.getElementById('input-description').value = description;
+    document.getElementById('input-amount').value = value;
+    document.getElementById('select-type-transaction').value = type;
+    document.querySelector('.category-transaction').value = category;
+  }
+  
   
   readFieldsForm(event) {
 
@@ -121,14 +130,5 @@ export default class HandleView {
    
   }
 
-  showModal(listener) {
-    document.querySelector(listener).addEventListener('click', openModal);
-  }
-
-  hiddenModal(listener) {
-    document.querySelector(listener).addEventListener('click', closeModal);
-  }
-
-
-  
+ 
 }

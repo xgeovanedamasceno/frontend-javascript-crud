@@ -20,6 +20,10 @@ export default class HandleTransaction {
   
   }
 
+  getNewTransaction(date, description, valueTransaction, type, category) {
+    return newTransaction = new Transaction(date, description, valueTransaction, type, category);
+  }
+
   saveTransaction(date, description, valueTransaction, type, category) {
     const transaction = new Transaction(date, description, valueTransaction, type, category);
     this.handleStorage.create(transaction);
