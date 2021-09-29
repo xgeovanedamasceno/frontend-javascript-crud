@@ -107,9 +107,9 @@ export default class HandleView {
 
   updateSummary() {
     const handleTransaction = new HandleTransaction();
-    const currentBalance = handleTransaction.getBalance();
-    const totalIncomes = handleTransaction.getIncomes();
-    const totalExpenses = handleTransaction.getExpenses();
+    const currentBalance = handleTransaction.getCurrentBalance();
+    const totalIncomes = handleTransaction.getTotalIncomes();
+    const totalExpenses = handleTransaction.getTotalExpenses();
     document.querySelector('#current-balance').innerText = `Saldo Atual: R$ ${currentBalance}`;
     document.querySelector('#total-incomes').innerText = `Total de Receitas: R$ ${totalIncomes}`;
     document.querySelector('#total-expenses').innerText = `Total de Despesas: R$ ${totalExpenses}`;

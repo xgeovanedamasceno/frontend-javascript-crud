@@ -47,16 +47,16 @@ export default class HandleTransaction {
     return this.handleStorage.read()[index];
   }
 
-  getBalance() {
+  getCurrentBalance() {
     const transactions = this.handleStorage.read();
     let sumBalance = 0;
     transactions.forEach(transaction => {
       if(transaction.type === 'income') sumBalance += +transaction.value;
     })
-    return sumBalance = this.getIncomes() - this.getExpenses();
+    return sumBalance = this.getTotalIncomes() - this.getTotalExpenses();
   }
 
-  getIncomes() {
+  getTotalIncomes() {
     const transactions = this.handleStorage.read();
     let sumIncomes = 0;
     transactions.forEach(transaction => {
@@ -65,7 +65,7 @@ export default class HandleTransaction {
     return sumIncomes;
   }
 
-  getExpenses() {
+  getTotalExpenses() {
     const transactions = this.handleStorage.read();
     let sumExpenses = 0;
     transactions.forEach(transaction => {
