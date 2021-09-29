@@ -11,16 +11,19 @@ import HandleTransaction from "./HandleTransaction.js";
 
 export default class HandleView {
   constructor() {
-    
+    this.editTransaction = this.editTransaction.bind(this);
+    this.showTransaction = this.showTransaction.bind(this);
+
   }
   
   addEventListenerToButtonsTransactions() {
-    console.log(this);
+
     const editButtons = document.querySelectorAll('[name="edit"]');
     const deleteButtons = document.querySelectorAll('[name="delete"]');
     
     editButtons.forEach(button => {
-      button.addEventListener('click', this.EditTransaction);
+      button.addEventListener('click', this.showModal);
+      button.addEventListener('click', this.editTransaction);
 
     });
 
@@ -57,24 +60,26 @@ export default class HandleView {
 
   editTransaction(event) {
     const index = event.target.id;
-    console.log(index);
-    document.querySelector('#new-transaction').removeEventListener('click', openModal);
-
     const handleTransaction = new HandleTransaction();
-    const specificTransaction = handleTransaction.getSpecificTransaction(index);
+    const transaction = handleTransaction.getSpecificTransaction(index);
 
-    console.log(specificTransaction);
-    this.fillFieldsForm(specificTransaction, index);
+    this.fillFieldsForm(transaction, index);
   }
 
   fillFieldsForm(transaction, index) {
+    console.log(transaction);
     const {date, description, value, type, category } = transaction;
     document.getElementById('input-description').dataset.flag = index;
     document.getElementById('date').innerHTML = date;
     document.getElementById('input-description').value = description;
     document.getElementById('input-amount').value = value;
+    
     document.getElementById('select-type-transaction').value = type;
-    document.querySelector('.category-transaction').value = category;
+
+    const categorySelected = `.${type}-category`;
+    console.log(categorySelected);
+    document.querySelector('#select-category-transaction').querySelector(categorySelected).value = category;
+    document.querySelector('#select-category-transaction').querySelector(categorySelected).classList.add('.active');
   }
   
   
@@ -107,7 +112,7 @@ export default class HandleView {
     const transactions = handleTransaction.getTransactions();
     transactions.forEach(this.showTransaction);
     this.addEventListenerToButtonsTransactions();
-    console.log(this);
+
   }
 
 
@@ -127,8 +132,38 @@ export default class HandleView {
     `
     tableDash.appendChild(newRowTransaction);
     
-   
   }
+
+  showModal(e) {
+    e.preventDefault();
+    console.log(this);
+
+    document.querySelector('.modal').classList.add('active');
+  }
+  
+  
+  
+  hiddenModal(e) {
+    e.preventDefault();
+    document.querySelector('.modal').classList.remove('active');
+  }
+  
+  
+  
+  // outCloseModal() {
+  //   if(e.target === this) this.hiddenModal(e);
+  //   document.querySelector('.modal').addEventListener('click', this.hiddenModal);
+  // }
+  
+  unSetModal(listener) {
+    document.querySelector(listener).addEventListener('click', this.hiddenModal);
+  }
+  
+  setModal(listener) {
+    console.log(this);
+    document.querySelector(listener).addEventListener('click',this.showModal);
+  }
+
 
  
 }
