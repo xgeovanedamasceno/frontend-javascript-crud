@@ -15,6 +15,8 @@ export default class HandleView {
     this.showTransaction = this.showTransaction.bind(this);
     this.readFieldsForm = this.readFieldsForm.bind(this);
     this.deleteTransaction = this.deleteTransaction.bind(this);
+    this.checkSelectTypeFilter = this.checkSelectTypeFilter.bind(this);
+
 
   }
   
@@ -55,6 +57,12 @@ export default class HandleView {
       expenseSelect.setAttribute('required', '');
     }
   
+  }
+
+  checkSelectTypeFilter(e) {
+    const value = e.target.value;
+    if (value === 'income') this.getIncomeTransactions(value);
+    if (value === 'expense') getExpenseTransactions(value);
   }
 
   clearFieldsForm() {
@@ -101,16 +109,22 @@ export default class HandleView {
     
   }
 
+  getIncomeTransactions(value) {
+    const handleTransaction = new HandleTransaction();
+    const transactions = handleTransaction.getTransactions();
+    transactions.forEach(transactions => {
+      
+    })
+  }
+
   updateSummary() {
     const handleTransaction = new HandleTransaction();
-    const currentBalance = handleTransaction.getBalance();
-    const totalIncomes = handleTransaction.getIncomes();
-    const totalExpenses = handleTransaction.getExpenses();
-    document.querySelector('#current-balance').innerHTML = `Saldo Atual: R$ ${currentBalance}`;
-    document.querySelector('#total-incomes').innerHTML = `Total de Receitas: R$ ${totalIncomes}`;
-    document.querySelector('#total-expenses').innerHTML = `Total de Despesas: R$ ${totalExpenses}`;
-
-
+    const currentBalance = handleTransaction.getCurrentBalance();
+    const totalIncomes = handleTransaction.getTotalIncomes();
+    const totalExpenses = handleTransaction.getTotalExpenses();
+    document.querySelector('#current-balance').innerText = `Saldo Atual: R$ ${currentBalance}`;
+    document.querySelector('#total-incomes').innerText = `Total de Receitas: R$ ${totalIncomes}`;
+    document.querySelector('#total-expenses').innerText = `Total de Despesas: R$ ${totalExpenses}`;
   }
   
   
@@ -201,7 +215,6 @@ export default class HandleView {
   }
   
   setModal(listener) {
-  
     document.querySelector(listener).addEventListener('click',this.showModal);
   }
 
