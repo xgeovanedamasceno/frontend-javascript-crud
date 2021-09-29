@@ -98,8 +98,19 @@ export default class HandleView {
     const categorySelected = `.${type}-category`;
     console.log(categorySelected);
     document.querySelector('#select-category-transaction').querySelector(categorySelected).value = category;
-    // 
     
+  }
+
+  updateSummary() {
+    const handleTransaction = new HandleTransaction();
+    const currentBalance = handleTransaction.getBalance();
+    const totalIncomes = handleTransaction.getIncomes();
+    const totalExpenses = handleTransaction.getExpenses();
+    document.querySelector('#current-balance').innerHTML = `Saldo Atual: R$ ${currentBalance}`;
+    document.querySelector('#total-incomes').innerHTML = `Total de Receitas: R$ ${totalIncomes}`;
+    document.querySelector('#total-expenses').innerHTML = `Total de Despesas: R$ ${totalExpenses}`;
+
+
   }
   
   
