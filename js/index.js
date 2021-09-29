@@ -1,21 +1,35 @@
-import getCategoryForm from "./modules/getCategoryForm.js";
-import checkSelectForm from "./modules/checkSelectForm.js";
 
-import readFieldsForm from "./modules/readFieldsForms.js";
-import updateTable from "./modules/updateTable.js";
-import HandleModal from "./modules/HandleModal.js";
+import HandleView from "./modules/HandleView.js";
 
 
 
-const modal = new HandleModal('.modal','active');
-modal.open('#new-transaction');
-modal.close('.modal-close');
-modal.outModal();
 
 
-document.getElementById('save').addEventListener('click', readFieldsForm);
-document.getElementById('select-type-transaction').addEventListener('change', checkSelectForm);
+const handleView = new HandleView();
+handleView.setModal('#new-transaction');
+handleView.unSetModal('.modal-close');
+// handleView.outCloseModal();
 
-// document.getElementById('select-category-transaction').querySelector('.active').addEventListener('click', getCategoryForm);
 
-updateTable();
+
+handleView.updateTable();
+document.getElementById('save').addEventListener('click', handleView.readFieldsForm);
+document.getElementById('select-type-transaction')
+.addEventListener('change', handleView.checkSelectForm);
+
+// function closeModal(e) {
+//   e.preventDefault();
+//   document.querySelector('.modal').classList.remove('active');
+// }
+// function openModal(e) {
+//   e.preventDefault();
+//   if (e.target.name === 'edit') handleView.editTransaction(e);
+//   document.querySelector('.modal').classList.add('active');
+    
+// }
+
+
+// document.querySelector('#new-transaction').addEventListener('click', openModal);
+// document.querySelector('.modal-close').addEventListener('click', closeModal);
+
+// document.querySelector('.edit').addEventListener('click', openModal);
