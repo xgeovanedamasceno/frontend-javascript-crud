@@ -17,3 +17,7 @@ document.getElementById('select-type-transaction')
 .addEventListener('change', handleView.checkSelectForm);
 
 document.querySelector('#transaction-filter').addEventListener('click', handleView.checkSelectTypeFilter);
+
+document.querySelector('#category-filter').addEventListener('click', handleView.checkSelectCategoryFilter);
+
+

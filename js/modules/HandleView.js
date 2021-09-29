@@ -16,6 +16,7 @@ export default class HandleView {
     this.readFieldsForm = this.readFieldsForm.bind(this);
     this.deleteTransaction = this.deleteTransaction.bind(this);
     this.checkSelectTypeFilter = this.checkSelectTypeFilter.bind(this);
+    this.checkSelectCategoryFilter = this.checkSelectCategoryFilter.bind(this);
 
 
   }
@@ -63,6 +64,62 @@ export default class HandleView {
     const value = e.target.value;
     if (value === 'income') this.getIncomeTransactions(value);
     if (value === 'expense') this.getExpenseTransactions(value);
+  }
+
+  checkSelectCategoryFilter(e) {
+    const value = e.target.value;
+    const handleTransaction = new HandleTransaction();
+
+    switch (value) {
+      case 'food':
+        const foodExpenses = handleTransaction.getExpensesByCategory(value);
+        this.clearTable();
+        foodExpenses.forEach(this.showTransaction);
+        break;
+      case 'home' :
+        const homeExpenses = handleTransaction.getExpensesByCategory(value);
+        this.clearTable();
+        homeExpenses.forEach(this.showTransaction);
+        break;
+      case 'health' :
+        const healthExpenses = handleTransaction.getExpensesByCategory(value);
+        this.clearTable();
+        healthExpenses.forEach(this.showTransaction);
+        break;
+      case 'auto' :
+        let autoExpenses = handleTransaction.getExpensesByCategory(value);
+        this.clearTable();
+        autoExpenses.forEach(this.showTransaction);
+        break;
+      case 'freetime' :
+        let freetimeExpenses = handleTransaction.getExpensesByCategory(value);
+        this.clearTable();
+        freetimeExpenses.forEach(this.showTransaction);
+        break;
+      case 'salary' :
+        let salaryIncomes = handleTransaction.getIncomesByCategory(value);
+        this.clearTable();
+        salaryIncomes.forEach(this.showTransaction);
+        break;
+      case 'bonus' :
+        let bonusIncomes = handleTransaction.getIncomesByCategory(value);
+        this.clearTable();
+        bonusIncomes.forEach(this.showTransaction);
+        break;
+      case 'roi' :
+        let roiIncomes = handleTransaction.getIncomesByCategory(value);
+        this.clearTable();
+        roiIncomes.forEach(this.showTransaction);
+        break;
+      case 'rent-roi' :
+        let rentIncomes = handleTransaction.getIncomesByCategory(value);
+        this.clearTable();
+        rentIncomes.forEach(this.showTransaction);
+        break;
+      default :
+        0;
+    }
+
   }
 
   clearFieldsForm() {
