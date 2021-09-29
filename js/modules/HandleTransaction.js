@@ -74,5 +74,32 @@ export default class HandleTransaction {
     return sumExpenses;
   }
 
+  getIncomes() {
+    const incomesTransactions = this.getTransactions();
+    let incomes = [];
+    incomesTransactions.forEach(income => {
+      incomes = incomesTransactions.filter(this.transactionIsIncome, income);
+    });
+
+    return incomes;
+  }
+
+  getExpenses() {
+    const expensesTransactions = this.getTransactions();
+    let expenses = [];
+    expensesTransactions.forEach(expense => {
+      expenses = expensesTransactions.filter(this.transactionIsExpense, expense);
+    });
+
+    return expenses;
+  }
+
+  transactionIsIncome(income) {
+    return income.type == 'income';
+  }
+
+  transactionIsExpense(expense) {
+    return expense.type == 'expense';
+  }
 
 }

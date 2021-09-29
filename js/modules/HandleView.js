@@ -62,7 +62,7 @@ export default class HandleView {
   checkSelectTypeFilter(e) {
     const value = e.target.value;
     if (value === 'income') this.getIncomeTransactions(value);
-    if (value === 'expense') getExpenseTransactions(value);
+    if (value === 'expense') this.getExpenseTransactions(value);
   }
 
   clearFieldsForm() {
@@ -76,6 +76,35 @@ export default class HandleView {
     const rows = document.querySelectorAll('#report tbody tr');
     rows.forEach(row => row.parentElement.removeChild(row));
   }
+
+  createCategoryElement(value) {
+    const categoryFilter = document.getElementById('category-filter');
+    if(value === 'income') {
+      categoryFilter.innerHTML = `
+      <label for="${value}-category-filter">Categoria</label>
+      <select name="${value}-category-filter" id="${value}-category">
+        <option disabled selected value>Selecione</option>
+        <option value="salary">Salário</option>
+        <option value="bonus">Bônus</option>
+        <option value="roi">Ações</option>
+        <option value="rent-roi">Renda de alugueis</option>
+      </select>
+    `
+    } else {
+      categoryFilter.innerHTML = `
+        <label for="${value}-category-filter">Categoria</label>
+        <select name="${value}-category-filter" id="${value}-category">;
+          <option disabled selected value>Selecione</option>
+          <option value="food">Alimentação</option>
+          <option value="home">Moradia</option>
+          <option value="health">Saúde</option>
+          <option value="auto">Transporte</option>
+          <option value="freetime">Lazer</option>
+        </select>
+      `
+    }
+  }
+  
 
   deleteTransaction(e) {
     const index = e.target.id;
@@ -111,10 +140,18 @@ export default class HandleView {
 
   getIncomeTransactions(value) {
     const handleTransaction = new HandleTransaction();
-    const transactions = handleTransaction.getTransactions();
-    transactions.forEach(transactions => {
-      
-    })
+    const incomes = handleTransaction.getIncomes();
+    this.clearTable();
+    this.createCategoryElement(value);
+    incomes.forEach(this.showTransaction);
+  }
+
+  getExpenseTransactions(value) {
+    const handleTransaction = new HandleTransaction();
+    const expenses = handleTransaction.getExpenses();
+    this.clearTable();
+    this.createCategoryElement(value);
+    expenses.forEach(this.showTransaction);
   }
 
   updateSummary() {
