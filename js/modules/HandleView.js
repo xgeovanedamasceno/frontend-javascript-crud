@@ -79,13 +79,13 @@ export default class HandleView {
     const categorySelected = `.${type}-category`;
     console.log(categorySelected);
     document.querySelector('#select-category-transaction').querySelector(categorySelected).value = category;
-    document.querySelector('#select-category-transaction').querySelector(categorySelected).classList.add('.active');
+    // 
+    this.checkSelectForm(categorySelected);
   }
   
   
   readFieldsForm(event) {
-
-    document.querySelector('#new-transaction').removeEventListener('click',this.modal.open)
+    event.preventDefault();
 
     const handleTransaction = new HandleTransaction();
     event.preventDefault();
