@@ -14,6 +14,7 @@ export default class HandleView {
     this.editTransaction = this.editTransaction.bind(this);
     this.showTransaction = this.showTransaction.bind(this);
     this.readFieldsForm = this.readFieldsForm.bind(this);
+    this.deleteTransaction = this.deleteTransaction.bind(this);
 
   }
   
@@ -28,9 +29,8 @@ export default class HandleView {
     });
 
 
-
     deleteButtons.forEach(button => {
-      // button.addEventListener('click', deleteTransaction);
+      button.addEventListener('click', this.deleteTransaction);
     })
   }
 
@@ -62,6 +62,18 @@ export default class HandleView {
       formFields.forEach(field => {
       field.value = '';
     })
+  }
+
+  clearTable() {
+    const rows = document.querySelectorAll('#report tbody tr');
+    rows.forEach(row => row.parentElement.removeChild(row));
+  }
+
+  deleteTransaction(e) {
+    const index = e.target.id;
+    const handleTransaction = new HandleTransaction();
+    handleTransaction.deleteTransaction(index);
+    this.updateTable();
   }
 
 
@@ -134,6 +146,7 @@ export default class HandleView {
   updateTable() {
     const handleTransaction = new HandleTransaction();
     const transactions = handleTransaction.getTransactions();
+    this.clearTable();
     transactions.forEach(this.showTransaction);
     this.addEventListenerToButtonsTransactions();
 
@@ -172,19 +185,12 @@ export default class HandleView {
     document.querySelector('.modal').classList.remove('active');
   }
   
-  
-  
-  // outCloseModal() {
-  //   if(e.target === this) this.hiddenModal(e);
-  //   document.querySelector('.modal').addEventListener('click', this.hiddenModal);
-  // }
-  
   unSetModal(listener) {
     document.querySelector(listener).addEventListener('click', this.hiddenModal);
   }
   
   setModal(listener) {
-    console.log(this);
+  
     document.querySelector(listener).addEventListener('click',this.showModal);
   }
 
