@@ -58,7 +58,10 @@ export default class HandleView {
   }
 
   clearFieldsForm() {
-    
+      const formFields = document.querySelectorAll('.form-field');
+      formFields.forEach(field => {
+      field.value = '';
+    })
   }
 
 
@@ -110,7 +113,8 @@ export default class HandleView {
       handleTransaction.saveTransaction(date, description, valueTransaction, type, category);
       console.log(this);
       this.updateTable();
-      // clearFields();
+      this.clearFieldsForm();
+
 
     } else {
       bufferTransaction.date = document.getElementById('date').innerText;
@@ -123,7 +127,7 @@ export default class HandleView {
       
       handleTransaction.updateTransaction(index, bufferTransaction);
       this.updateTable();
-      // clearFields();
+      this.clearFieldsForm();
     }
   }
 
