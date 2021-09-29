@@ -25,7 +25,6 @@ export default class HandleView {
     editButtons.forEach(button => {
       button.addEventListener('click', this.showModal);
       button.addEventListener('click', this.editTransaction);
-
     });
 
 
@@ -58,6 +57,13 @@ export default class HandleView {
   
   }
 
+  clearFieldsForm() {
+      const formFields = document.querySelectorAll('.form-field');
+      formFields.forEach(field => {
+      field.value = '';
+    })
+  }
+
 
   editTransaction(event) {
     const index = event.target.id;
@@ -81,7 +87,7 @@ export default class HandleView {
     console.log(categorySelected);
     document.querySelector('#select-category-transaction').querySelector(categorySelected).value = category;
     // 
-    this.checkSelectForm(categorySelected);
+    
   }
   
   
@@ -89,7 +95,7 @@ export default class HandleView {
     event.preventDefault();
 
     const handleTransaction = new HandleTransaction();
-    event.preventDefault();
+
 
     const bufferTransaction = handleTransaction.getBufferTransaction();
 
@@ -107,6 +113,21 @@ export default class HandleView {
       handleTransaction.saveTransaction(date, description, valueTransaction, type, category);
       console.log(this);
       this.updateTable();
+      this.clearFieldsForm();
+
+
+    } else {
+      bufferTransaction.date = document.getElementById('date').innerText;
+      bufferTransaction.date = '29/9/2021';
+      console.log('fix date');
+      bufferTransaction.description = document.getElementById('input-description').value;
+      bufferTransaction.valueTransaction = document.getElementById('input-amount').value;
+      bufferTransaction.type =  document.getElementById('select-type-transaction').value;
+      bufferTransaction.category = document.querySelector('#select-category-transaction').querySelector('.active').querySelector('.category-transaction').value;
+      
+      handleTransaction.updateTransaction(index, bufferTransaction);
+      this.updateTable();
+      this.clearFieldsForm();
     }
   }
 
