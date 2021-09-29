@@ -64,6 +64,12 @@ export default class HandleView {
     })
   }
 
+  clearTable() {
+    const rows = document.querySelectorAll('#report tbody tr');
+    console.log(rows);
+    rows.forEach(row => row.parentElement.removeChild(row));
+  }
+
 
   editTransaction(event) {
     const index = event.target.id;
@@ -134,6 +140,7 @@ export default class HandleView {
   updateTable() {
     const handleTransaction = new HandleTransaction();
     const transactions = handleTransaction.getTransactions();
+    this.clearTable();
     transactions.forEach(this.showTransaction);
     this.addEventListenerToButtonsTransactions();
 
