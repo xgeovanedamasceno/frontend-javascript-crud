@@ -15,6 +15,8 @@ export default class HandleView {
     this.showTransaction = this.showTransaction.bind(this);
     this.readFieldsForm = this.readFieldsForm.bind(this);
     this.deleteTransaction = this.deleteTransaction.bind(this);
+    this.checkSelectTypeFilter = this.checkSelectTypeFilter.bind(this);
+
 
   }
   
@@ -57,8 +59,10 @@ export default class HandleView {
   
   }
 
-  checkSelectFilter(e) {
+  checkSelectTypeFilter(e) {
     const value = e.target.value;
+    if (value === 'income') this.getIncomeTransactions(value);
+    if (value === 'expense') getExpenseTransactions(value);
   }
 
   clearFieldsForm() {
@@ -103,6 +107,14 @@ export default class HandleView {
     console.log(categorySelected);
     document.querySelector('#select-category-transaction').querySelector(categorySelected).value = category;
     
+  }
+
+  getIncomeTransactions(value) {
+    const handleTransaction = new HandleTransaction();
+    const transactions = handleTransaction.getTransactions();
+    transactions.forEach(transactions => {
+      
+    })
   }
 
   updateSummary() {
