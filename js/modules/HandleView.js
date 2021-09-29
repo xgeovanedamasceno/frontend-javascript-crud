@@ -14,6 +14,7 @@ export default class HandleView {
     this.editTransaction = this.editTransaction.bind(this);
     this.showTransaction = this.showTransaction.bind(this);
     this.readFieldsForm = this.readFieldsForm.bind(this);
+    this.deleteTransaction = this.deleteTransaction.bind(this);
 
   }
   
@@ -28,9 +29,8 @@ export default class HandleView {
     });
 
 
-
     deleteButtons.forEach(button => {
-      // button.addEventListener('click', deleteTransaction);
+      button.addEventListener('click', this.deleteTransaction);
     })
   }
 
@@ -66,8 +66,15 @@ export default class HandleView {
 
   clearTable() {
     const rows = document.querySelectorAll('#report tbody tr');
-    console.log(rows);
     rows.forEach(row => row.parentElement.removeChild(row));
+  }
+
+  deleteTransaction(e) {
+    console.log(this);
+    const index = e.target.id;
+    const handleTransaction = new HandleTransaction();
+    handleTransaction.deleteTransaction(index);
+    this.updateTable();
   }
 
 
@@ -191,7 +198,7 @@ export default class HandleView {
   }
   
   setModal(listener) {
-    console.log(this);
+  
     document.querySelector(listener).addEventListener('click',this.showModal);
   }
 

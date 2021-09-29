@@ -35,6 +35,10 @@ export default class HandleTransaction {
     this.handleStorage.update(index, upTransaction);
   }
 
+  deleteTransaction(index) {
+    this.handleStorage.delete(index);
+  }
+
   getTransactions() {
     return this.handleStorage.read();
   }
