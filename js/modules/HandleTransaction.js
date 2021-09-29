@@ -29,6 +29,12 @@ export default class HandleTransaction {
     this.handleStorage.create(transaction);
   }
 
+  updateTransaction(index, transaction) {
+    const { date, description, valueTransaction, type, category } = transaction;
+    const upTransaction = new Transaction(date, description, valueTransaction, type, category);
+    this.handleStorage.update(index, upTransaction);
+  }
+
   getTransactions() {
     return this.handleStorage.read();
   }
