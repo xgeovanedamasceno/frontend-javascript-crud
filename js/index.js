@@ -6,6 +6,8 @@ handleView.setModal('#new-transaction');
 handleView.unSetModal('.modal-close');
 // handleView.outCloseModal();
 
+handleView.updateSummary();
+
 
 
 handleView.updateTable();
