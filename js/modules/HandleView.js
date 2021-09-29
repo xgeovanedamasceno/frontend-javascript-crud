@@ -25,7 +25,6 @@ export default class HandleView {
     editButtons.forEach(button => {
       button.addEventListener('click', this.showModal);
       button.addEventListener('click', this.editTransaction);
-
     });
 
 
@@ -81,7 +80,7 @@ export default class HandleView {
     console.log(categorySelected);
     document.querySelector('#select-category-transaction').querySelector(categorySelected).value = category;
     // 
-    this.checkSelectForm(categorySelected);
+    
   }
   
   
