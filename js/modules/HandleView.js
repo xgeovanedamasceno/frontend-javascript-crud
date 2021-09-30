@@ -1,7 +1,6 @@
-import areFieldsValid from "./areFieldsValid.js";
+
 import getStringDate from "./getDate.js";
-import openModal from "./openModal.js"
-import closeModal from "./closeModal.js"
+
 
 
 
