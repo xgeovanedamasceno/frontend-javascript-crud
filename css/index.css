@@ -64,10 +64,6 @@
   font-weight: bold;
 }
 
-#inputs-forms span * {
-  display: block;
-}
-
 #form-buttons {
   margin: 20px 0;
 }
