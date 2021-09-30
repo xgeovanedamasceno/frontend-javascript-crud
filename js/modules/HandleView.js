@@ -168,6 +168,7 @@ export default class HandleView {
     const handleTransaction = new HandleTransaction();
     handleTransaction.deleteTransaction(index);
     this.updateTable();
+    this.updateSummary();
   }
 
 
@@ -244,6 +245,7 @@ export default class HandleView {
       handleTransaction.saveTransaction(date, description, valueTransaction, type, category);
       console.log(this);
       this.updateTable();
+      this.updateSummary();
       this.clearFieldsForm();
 
 
