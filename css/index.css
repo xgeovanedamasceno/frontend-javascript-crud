@@ -26,7 +26,7 @@
   padding: 20px;
   position: relative;
   width: 500px;
-  height: 350px;
+  height: 310px;
   /* margin: 15% auto; */
   animation-name: modal;
   animation-duration: 0.4s;
@@ -43,19 +43,20 @@
   }
 }
 
-#modal-close {
+.modal-content * {
+  margin-bottom: 5px;
+}
+.modal-close {
   width: 40px;
   height: 40px;
-  top: -15px;
-  right: -15px;
+  top: 0;
+  right: 0;
   position: absolute;
-  border: 1px solid #444;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3);
-  background-color: #ff1776;
-  font-size: 1.2rem;
-  color: white;
+  background-color: white;
+  font-size: 1.4rem;
+  color: #444;
   font-weight: bold;
-  margin: 0;
+  margin-right: 5px;
   cursor: pointer;
 }
 
@@ -63,11 +64,8 @@
   font-weight: bold;
 }
 
-#inputs-form {
-  margin: 20px 0;
-}
-
-#select-forms {
+#inputs-forms span * {
+  display: block;
 }
 
 #form-buttons {
