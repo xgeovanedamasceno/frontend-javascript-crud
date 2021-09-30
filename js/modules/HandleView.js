@@ -1,10 +1,11 @@
 
-import getStringDate from "./getDate.js";
+
 
 
 
 
 import HandleTransaction from "./HandleTransaction.js";
+import UtilHandleView from "./UtilHandleView.js";
 
 
 
@@ -16,6 +17,8 @@ export default class HandleView {
     this.deleteTransaction = this.deleteTransaction.bind(this);
     this.checkSelectTypeFilter = this.checkSelectTypeFilter.bind(this);
     this.checkSelectCategoryFilter = this.checkSelectCategoryFilter.bind(this);
+
+    this.utilView = new UtilHandleView();
 
 
   }
@@ -230,7 +233,7 @@ export default class HandleView {
 
     const bufferTransaction = handleTransaction.getBufferTransaction();
 
-    if (areFieldsValid()) {
+    if (this.utilView.areFieldsValid()) {
       bufferTransaction.description = document.getElementById('input-description').value;
       bufferTransaction.valueTransaction = document.getElementById('input-amount').value;
       bufferTransaction.type =  document.getElementById('select-type-transaction').value;
@@ -239,7 +242,8 @@ export default class HandleView {
     const index = document.getElementById('input-description').dataset.flag;
 
     if (index === 'new') {
-      const date = getStringDate();
+      const date = this.utilView.getStringDate();
+      console.log(date);
       const { description, valueTransaction, type, category } = bufferTransaction;
       handleTransaction.saveTransaction(date, description, valueTransaction, type, category);
       console.log(this);
@@ -250,7 +254,7 @@ export default class HandleView {
 
     } else {
       bufferTransaction.date = document.getElementById('date').innerText;
-      bufferTransaction.date = '29/9/2021';
+      bufferTransaction.date = '30/9/2021';
       console.log('fix date');
       bufferTransaction.description = document.getElementById('input-description').value;
       bufferTransaction.valueTransaction = document.getElementById('input-amount').value;
@@ -268,6 +272,7 @@ export default class HandleView {
     const transactions = handleTransaction.getTransactions();
     this.clearTable();
     transactions.forEach(this.showTransaction);
+    this.updateSummary();
     this.addEventListenerToButtonsTransactions();
 
   }
