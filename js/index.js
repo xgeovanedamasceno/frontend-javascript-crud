@@ -8,6 +8,7 @@ handleView.unSetModal('.modal-close');
 
 handleView.updateSummary();
 
+handleView.teste();
 
 
 handleView.updateTable();
