@@ -1,9 +1,3 @@
-
-
-
-
-
-
 import HandleTransaction from "./HandleTransaction.js";
 import UtilHandleView from "./UtilHandleView.js";
 
@@ -24,7 +18,7 @@ export default class HandleView {
   }
 
   teste() {
-    const t = this.handleTransaction.getCurrentBalance();
+    let t = this.handleTransaction.getList('expense');
     console.log(t);
   }
   
@@ -67,65 +61,17 @@ export default class HandleView {
   
   }
 
-  checkSelectTypeFilter(e) {
-    const value = e.target.value;
-    if (value === 'income') this.getIncomeTransactions(value);
-    if (value === 'expense') this.getExpenseTransactions(value);
+  checkSelectTypeFilter(event) {
+    const value = event.target.value;
+    if (value != '') this.getListByType(value);
   }
 
-  checkSelectCategoryFilter(e) {
-    const value = e.target.value;
-    // const handleTransaction = new HandleTransaction();
+  checkSelectCategoryFilter(event) {
+    const value = event.target.value;
+    const typeSelected = document.querySelector('#transaction-filter').value;
 
-    switch (value) {
-      case 'food':
-        const foodExpenses = this.handleTransaction.getExpensesByCategory(value);
-        this.clearTable();
-        foodExpenses.forEach(this.showTransaction);
-        break;
-      case 'home' :
-        const homeExpenses = this.handleTransaction.getExpensesByCategory(value);
-        this.clearTable();
-        homeExpenses.forEach(this.showTransaction);
-        break;
-      case 'health' :
-        const healthExpenses = this.handleTransaction.getExpensesByCategory(value);
-        this.clearTable();
-        healthExpenses.forEach(this.showTransaction);
-        break;
-      case 'auto' :
-        let autoExpenses = this.handleTransaction.getExpensesByCategory(value);
-        this.clearTable();
-        autoExpenses.forEach(this.showTransaction);
-        break;
-      case 'freetime' :
-        let freetimeExpenses = this.handleTransaction.getExpensesByCategory(value);
-        this.clearTable();
-        freetimeExpenses.forEach(this.showTransaction);
-        break;
-      case 'salary' :
-        let salaryIncomes = this.handleTransaction.getIncomesByCategory(value);
-        this.clearTable();
-        salaryIncomes.forEach(this.showTransaction);
-        break;
-      case 'bonus' :
-        let bonusIncomes = this.handleTransaction.getIncomesByCategory(value);
-        this.clearTable();
-        bonusIncomes.forEach(this.showTransaction);
-        break;
-      case 'roi' :
-        let roiIncomes = this.handleTransaction.getIncomesByCategory(value);
-        this.clearTable();
-        roiIncomes.forEach(this.showTransaction);
-        break;
-      case 'rent-roi' :
-        let rentIncomes = this.handleTransaction.getIncomesByCategory(value);
-        this.clearTable();
-        rentIncomes.forEach(this.showTransaction);
-        break;
-      default :
-        0;
-    }
+    if (value != '') this.getListByCategory(value, typeSelected);
+    
 
   }
 
@@ -201,15 +147,22 @@ export default class HandleView {
     
   }
 
-  getIncomeTransactions(value) {
-    const incomes = this.handleTransaction.getIncomes();
+  // getIncomeTransactions(value) {
+  //   const incomes = this.handleTransaction.getIncomes();
+  //   this.clearTable();
+  //   this.createCategoryElement(value);
+  //   incomes.forEach(this.showTransaction);
+  // }
+
+  getListByType(value) {
+    const transactions = this.handleTransaction.getTransactionsByType(value);
     this.clearTable();
     this.createCategoryElement(value);
-    incomes.forEach(this.showTransaction);
+    transactions.forEach(this.showTransaction);
   }
 
-  getExpenseTransactions(value) {
-    const expenses = this.handleTransaction.getExpenses();
+  getListByCategory(typeSelected, categorySelected) {
+    const expenses = this.handleTransaction.getTransactionsByCategory(typeSelected, categorySelected);
     this.clearTable();
     this.createCategoryElement(value);
     expenses.forEach(this.showTransaction);

@@ -8,7 +8,7 @@ handleView.unSetModal('.modal-close');
 
 handleView.updateSummary();
 
-handleView.teste();
+// handleView.teste();
 
 
 handleView.updateTable();
@@ -20,5 +20,4 @@ document.getElementById('select-type-transaction')
 document.querySelector('#transaction-filter').addEventListener('click', handleView.checkSelectTypeFilter);
 
 document.querySelector('#category-filter').addEventListener('click', handleView.checkSelectCategoryFilter);
-
 

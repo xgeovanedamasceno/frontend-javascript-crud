@@ -15,6 +15,31 @@ export default class HandleTransaction {
     this.handleStorage = new HandleStorage();
   }
 
+  
+
+  // getList(checker) {
+  //   const t = this.getTransactions()
+  //   console.log(t)
+  //   const listT = [];
+  //   t.forEach(tItem => {
+  //     if (tItem.type === checker) {
+  //       listT.push(tItem);
+  //     }
+  //   })
+  //   return listT;
+  // }
+
+  getTransactionsByType(checker) {
+    const t = this.getTransactions()
+    const listT = [];
+    t.forEach(tItem => {
+      if (tItem.type === checker) {
+        listT.push(tItem);
+      }
+    })
+    return listT;
+  }
+
   getBufferTransaction() {
     return this.bufferTransaction;
   
@@ -72,6 +97,28 @@ export default class HandleTransaction {
       if(transaction.type === 'expense') sumExpenses += +transaction.value;
     })
     return sumExpenses;
+  }
+
+  getTransactionsByType(checker) {
+    const t = this.getTransactions()
+    const listT = [];
+    t.forEach(tItem => {
+      if (tItem.type === checker) {
+        listT.push(tItem);
+      }
+    })
+    return listT;
+  }
+
+  getTransactionsByCategory(type, category) {
+    const transactions = this.getTransactionsByType(type);
+    const transactionsByCategory = [];
+    t.forEach(transaction => {
+      if (transactions.category === category) {
+        transactionsByCategory.push(transaction);
+      }
+    })
+    return transactionsByCategory;
   }
 
   getIncomes() {
