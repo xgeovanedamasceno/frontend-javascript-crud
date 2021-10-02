@@ -1,9 +1,3 @@
-
-
-
-
-
-
 import HandleTransaction from "./HandleTransaction.js";
 import UtilHandleView from "./UtilHandleView.js";
 
@@ -23,11 +17,6 @@ export default class HandleView {
 
   }
 
-  teste() {
-    const t = this.handleTransaction.getCurrentBalance();
-    console.log(t);
-  }
-  
   addEventListenerToButtonsTransactions() {
 
     const editButtons = document.querySelectorAll('[name="edit"]');
@@ -67,65 +56,18 @@ export default class HandleView {
   
   }
 
-  checkSelectTypeFilter(e) {
-    const value = e.target.value;
-    if (value === 'income') this.getIncomeTransactions(value);
-    if (value === 'expense') this.getExpenseTransactions(value);
+  checkSelectTypeFilter(event) {
+    const typeSelected = event.target.value;
+    if (typeSelected != '') this.getListByType(typeSelected);
   }
 
-  checkSelectCategoryFilter(e) {
-    const value = e.target.value;
-    // const handleTransaction = new HandleTransaction();
+  checkSelectCategoryFilter(event) {
+    const categorySelected = event.target.value;
+    const typeSelected = document.querySelector('#transaction-filter').value;
 
-    switch (value) {
-      case 'food':
-        const foodExpenses = this.handleTransaction.getExpensesByCategory(value);
-        this.clearTable();
-        foodExpenses.forEach(this.showTransaction);
-        break;
-      case 'home' :
-        const homeExpenses = this.handleTransaction.getExpensesByCategory(value);
-        this.clearTable();
-        homeExpenses.forEach(this.showTransaction);
-        break;
-      case 'health' :
-        const healthExpenses = this.handleTransaction.getExpensesByCategory(value);
-        this.clearTable();
-        healthExpenses.forEach(this.showTransaction);
-        break;
-      case 'auto' :
-        let autoExpenses = this.handleTransaction.getExpensesByCategory(value);
-        this.clearTable();
-        autoExpenses.forEach(this.showTransaction);
-        break;
-      case 'freetime' :
-        let freetimeExpenses = this.handleTransaction.getExpensesByCategory(value);
-        this.clearTable();
-        freetimeExpenses.forEach(this.showTransaction);
-        break;
-      case 'salary' :
-        let salaryIncomes = this.handleTransaction.getIncomesByCategory(value);
-        this.clearTable();
-        salaryIncomes.forEach(this.showTransaction);
-        break;
-      case 'bonus' :
-        let bonusIncomes = this.handleTransaction.getIncomesByCategory(value);
-        this.clearTable();
-        bonusIncomes.forEach(this.showTransaction);
-        break;
-      case 'roi' :
-        let roiIncomes = this.handleTransaction.getIncomesByCategory(value);
-        this.clearTable();
-        roiIncomes.forEach(this.showTransaction);
-        break;
-      case 'rent-roi' :
-        let rentIncomes = this.handleTransaction.getIncomesByCategory(value);
-        this.clearTable();
-        rentIncomes.forEach(this.showTransaction);
-        break;
-      default :
-        0;
-    }
+
+    if (categorySelected != '') this.getListByCategory(typeSelected, categorySelected);
+    
 
   }
 
@@ -141,12 +83,12 @@ export default class HandleView {
     rows.forEach(row => row.parentElement.removeChild(row));
   }
 
-  createCategoryElement(value) {
+  createCategoryElement(typeSelected) {
     const categoryFilter = document.getElementById('category-filter');
-    if(value === 'income') {
+    if(typeSelected === 'income') {
       categoryFilter.innerHTML = `
-      <label for="${value}-category-filter">Categoria</label>
-      <select name="${value}-category-filter" id="${value}-category">
+      <label for="${typeSelected}-category-filter">Categoria</label>
+      <select name="${typeSelected}-category-filter" id="${typeSelected}-category">
         <option disabled selected value>Selecione</option>
         <option value="salary">Salário</option>
         <option value="bonus">Bônus</option>
@@ -156,8 +98,8 @@ export default class HandleView {
     `
     } else {
       categoryFilter.innerHTML = `
-        <label for="${value}-category-filter">Categoria</label>
-        <select name="${value}-category-filter" id="${value}-category">;
+        <label for="${typeSelected}-category-filter">Categoria</label>
+        <select name="${typeSelected}-category-filter" id="${typeSelected}-category">;
           <option disabled selected value>Selecione</option>
           <option value="food">Alimentação</option>
           <option value="home">Moradia</option>
@@ -201,17 +143,18 @@ export default class HandleView {
     
   }
 
-  getIncomeTransactions(value) {
-    const incomes = this.handleTransaction.getIncomes();
+  getListByType(typeSelected) {
+    const transactions = this.handleTransaction.getTransactionsByType(typeSelected);
     this.clearTable();
-    this.createCategoryElement(value);
-    incomes.forEach(this.showTransaction);
+    this.createCategoryElement(typeSelected);
+    transactions.forEach(this.showTransaction);
   }
 
-  getExpenseTransactions(value) {
-    const expenses = this.handleTransaction.getExpenses();
+  getListByCategory(typeSelected, categorySelected) {
+    const expenses = this.handleTransaction.getTransactionsByCategory(typeSelected, categorySelected);
+    console.log(expenses)
     this.clearTable();
-    this.createCategoryElement(value);
+    this.createCategoryElement(typeSelected);
     expenses.forEach(this.showTransaction);
   }
 
@@ -270,7 +213,6 @@ export default class HandleView {
     this.addEventListenerToButtonsTransactions();
 
   }
-
 
   showTransaction(transaction, index) {
     const tableDash = document.querySelector('#report  tbody');
