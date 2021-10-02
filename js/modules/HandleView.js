@@ -83,12 +83,12 @@ export default class HandleView {
     rows.forEach(row => row.parentElement.removeChild(row));
   }
 
-  createCategoryElement(value) {
+  createCategoryElement(typeSelected) {
     const categoryFilter = document.getElementById('category-filter');
-    if(value === 'income') {
+    if(typeSelected === 'income') {
       categoryFilter.innerHTML = `
-      <label for="${value}-category-filter">Categoria</label>
-      <select name="${value}-category-filter" id="${value}-category">
+      <label for="${typeSelected}-category-filter">Categoria</label>
+      <select name="${typeSelected}-category-filter" id="${typeSelected}-category">
         <option disabled selected value>Selecione</option>
         <option value="salary">Salário</option>
         <option value="bonus">Bônus</option>
@@ -98,8 +98,8 @@ export default class HandleView {
     `
     } else {
       categoryFilter.innerHTML = `
-        <label for="${value}-category-filter">Categoria</label>
-        <select name="${value}-category-filter" id="${value}-category">;
+        <label for="${typeSelected}-category-filter">Categoria</label>
+        <select name="${typeSelected}-category-filter" id="${typeSelected}-category">;
           <option disabled selected value>Selecione</option>
           <option value="food">Alimentação</option>
           <option value="home">Moradia</option>
@@ -154,7 +154,7 @@ export default class HandleView {
     const expenses = this.handleTransaction.getTransactionsByCategory(typeSelected, categorySelected);
     console.log(expenses)
     this.clearTable();
-    this.createCategoryElement(categorySelected);
+    this.createCategoryElement(typeSelected);
     expenses.forEach(this.showTransaction);
   }
 
