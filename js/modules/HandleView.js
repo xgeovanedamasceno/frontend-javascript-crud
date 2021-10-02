@@ -17,11 +17,6 @@ export default class HandleView {
 
   }
 
-  teste() {
-    let t = this.handleTransaction.getList('expense');
-    console.log(t);
-  }
-  
   addEventListenerToButtonsTransactions() {
 
     const editButtons = document.querySelectorAll('[name="edit"]');
@@ -62,15 +57,16 @@ export default class HandleView {
   }
 
   checkSelectTypeFilter(event) {
-    const value = event.target.value;
-    if (value != '') this.getListByType(value);
+    const typeSelected = event.target.value;
+    if (typeSelected != '') this.getListByType(typeSelected);
   }
 
   checkSelectCategoryFilter(event) {
-    const value = event.target.value;
+    const categorySelected = event.target.value;
     const typeSelected = document.querySelector('#transaction-filter').value;
 
-    if (value != '') this.getListByCategory(value, typeSelected);
+
+    if (categorySelected != '') this.getListByCategory(typeSelected, categorySelected);
     
 
   }
@@ -147,24 +143,18 @@ export default class HandleView {
     
   }
 
-  // getIncomeTransactions(value) {
-  //   const incomes = this.handleTransaction.getIncomes();
-  //   this.clearTable();
-  //   this.createCategoryElement(value);
-  //   incomes.forEach(this.showTransaction);
-  // }
-
-  getListByType(value) {
-    const transactions = this.handleTransaction.getTransactionsByType(value);
+  getListByType(typeSelected) {
+    const transactions = this.handleTransaction.getTransactionsByType(typeSelected);
     this.clearTable();
-    this.createCategoryElement(value);
+    this.createCategoryElement(typeSelected);
     transactions.forEach(this.showTransaction);
   }
 
   getListByCategory(typeSelected, categorySelected) {
     const expenses = this.handleTransaction.getTransactionsByCategory(typeSelected, categorySelected);
+    console.log(expenses)
     this.clearTable();
-    this.createCategoryElement(value);
+    this.createCategoryElement(categorySelected);
     expenses.forEach(this.showTransaction);
   }
 
@@ -223,7 +213,6 @@ export default class HandleView {
     this.addEventListenerToButtonsTransactions();
 
   }
-
 
   showTransaction(transaction, index) {
     const tableDash = document.querySelector('#report  tbody');
