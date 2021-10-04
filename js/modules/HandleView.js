@@ -11,6 +11,7 @@ export default class HandleView {
     this.deleteTransaction = this.deleteTransaction.bind(this);
     this.checkSelectTypeFilter = this.checkSelectTypeFilter.bind(this);
     this.checkSelectCategoryFilter = this.checkSelectCategoryFilter.bind(this);
+    this.showModal = this.showModal.bind(this);
 
     this.utilView = new UtilHandleView();
     this.handleTransaction = new HandleTransaction();
@@ -128,7 +129,6 @@ export default class HandleView {
   }
 
   fillFieldsForm(transaction, index) {
-    console.log(transaction);
     const {date, description, value, type, category } = transaction;
     document.getElementById('input-description').dataset.flag = index;
     document.getElementById('date').innerHTML = date;
@@ -191,7 +191,6 @@ export default class HandleView {
 
     } else {
       bufferTransaction.date = document.getElementById('date').innerText;
-      bufferTransaction.date = '30/9/2021';
       console.log('fix date');
       bufferTransaction.description = document.getElementById('input-description').value;
       bufferTransaction.valueTransaction = document.getElementById('input-amount').value;
@@ -231,10 +230,13 @@ export default class HandleView {
     
   }
 
+  showDate() {
+    document.querySelector('#date').innerText = this.utilView.getStringDate();
+  }
+
   showModal(e) {
     e.preventDefault();
-    console.log(this);
-
+    this.showDate();
     document.querySelector('.modal').classList.add('active');
   }
   
