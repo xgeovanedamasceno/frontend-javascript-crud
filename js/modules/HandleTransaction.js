@@ -15,15 +15,15 @@ export default class HandleTransaction {
     this.handleStorage = new HandleStorage();
   }  
 
-  getTransactionsByType(checker) {
-    const t = this.getTransactions()
-    const listT = [];
-    t.forEach(tItem => {
-      if (tItem.type === checker) {
-        listT.push(tItem);
+  getTransactionsByType(typeSelected) {
+    const transactions = this.getTransactions()
+    const transactionsByType = [];
+    transactions.forEach(transaction => {
+      if (transaction.type === typeSelected) {
+        transactionsByType.push(tItem);
       }
     })
-    return listT;
+    return transactionsByType;
   }
 
   getBufferTransaction() {
