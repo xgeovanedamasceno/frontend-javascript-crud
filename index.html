@@ -24,45 +24,51 @@
       </span>
     </div>
 
-    <div id="main-dash">
+    <div id="outside-dash">
+      <div id="main-dash">
 
-      <div id="summary-dash">
-        <div id="header-summary">Sua Conta</div>
-        <div id="balance-summary">
-          <span id="current-balance">Saldo Atual:</span>
-          <span id="total-incomes">Total de Receitas:</span>
-          <span id="total-expenses">Total de Despesas:</span>
+        <div id="summary-dash">
+          <div id="header-summary">Sua Conta</div>
+          <div id="balance-summary">
+            <span id="current-balance">Saldo Atual:</span>
+            <span id="total-incomes">Total de Receitas:</span>
+            <span id="total-expenses">Total de Despesas:</span>
+          </div>
         </div>
+
+        <div id="filter-table">
+          <span id="type-filter">
+            <label for="type-filter">Tipo de transação</label>
+            <select name="type-filter" id="transaction-filter">
+              <option disabled selected value>Selecione</option>
+              <option value="all">Todas</option>
+              <option value="income">Receita</option>
+              <option value="expense">Despesa</option>
+            </select>
+          </span>
+          <span id="category-filter"></span>
+        </div>
+
+        <div id="report">
+          <table>
+            <thead>
+              <tr>
+                <th>Valor</th>
+                <th>Descrição</th>
+                <th>Categoria</th>
+                <th>Tipo de Transação</th>
+                <th>Data</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
       </div>
 
-      <div id="filter-table">
-        <span id="type-filter">
-          <label for="type-filter">Tipo de transação</label>
-          <select name="type-filter" id="transaction-filter">
-            <option disabled selected value>Selecione</option>
-            <option value="all">Todas</option>
-            <option value="income">Receita</option>
-            <option value="expense">Despesa</option>
-          </select>
-        </span>
-        <span id="category-filter"></span>
+      <div id="fetch-currency">
+        <span>Cotação do dia</span>
       </div>
-
-      <div id="report">
-        <table>
-          <thead>
-            <tr>
-              <th>Valor</th>
-              <th>Descrição</th>
-              <th>Categoria</th>
-              <th>Tipo de Transação</th>
-              <th>Data</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-
     </div>
 
     <form id="form-dash" class="modal">
@@ -128,8 +134,7 @@
           <button id="cancel" type="button" name="cancel">Cancelar</button>
         </div>
       </div>
-  </div>
-  </form>
+    </form>
   </div> <!-- end app  -->
 
   <script type="module" src="js/index.js"></script>
