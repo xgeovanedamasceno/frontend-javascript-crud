@@ -152,7 +152,6 @@ export default class HandleView {
 
   getListByCategory(typeSelected, categorySelected) {
     const expenses = this.handleTransaction.getTransactionsByCategory(typeSelected, categorySelected);
-    console.log(expenses)
     this.clearTable();
     this.createCategoryElement(typeSelected);
     expenses.forEach(this.showTransaction);
