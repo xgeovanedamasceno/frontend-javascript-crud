@@ -177,30 +177,32 @@ export default class HandleView {
       bufferTransaction.valueTransaction = document.getElementById('input-amount').value;
       bufferTransaction.type =  document.getElementById('select-type-transaction').value;
       bufferTransaction.category = document.querySelector('#select-category-transaction').querySelector('.active').querySelector('.category-transaction').value;
+
+      const index = document.getElementById('input-description').dataset.flag;
+
+      if (index === 'new') {
+        const date = this.utilView.getStringDate();
+        const { description, valueTransaction, type, category } = bufferTransaction;
+        this.handleTransaction.saveTransaction(date, description, valueTransaction, type, category);
+        this.updateTable();
+        this.updateSummary();
+        this.clearFieldsForm();
+
+
+      } else {
+        bufferTransaction.date = document.getElementById('date').innerText;
+        console.log('fix date');
+        bufferTransaction.description = document.getElementById('input-description').value;
+        bufferTransaction.valueTransaction = document.getElementById('input-amount').value;
+        bufferTransaction.type =  document.getElementById('select-type-transaction').value;
+        bufferTransaction.category = document.querySelector('#select-category-transaction').querySelector('.active').querySelector('.category-transaction').value;
+        
+        this.handleTransaction.updateTransaction(index, bufferTransaction);
+        this.updateTable();
+        this.clearFieldsForm();
+      }
     }      
-    const index = document.getElementById('input-description').dataset.flag;
-
-    if (index === 'new') {
-      const date = this.utilView.getStringDate();
-      const { description, valueTransaction, type, category } = bufferTransaction;
-      this.handleTransaction.saveTransaction(date, description, valueTransaction, type, category);
-      this.updateTable();
-      this.updateSummary();
-      this.clearFieldsForm();
-
-
-    } else {
-      bufferTransaction.date = document.getElementById('date').innerText;
-      console.log('fix date');
-      bufferTransaction.description = document.getElementById('input-description').value;
-      bufferTransaction.valueTransaction = document.getElementById('input-amount').value;
-      bufferTransaction.type =  document.getElementById('select-type-transaction').value;
-      bufferTransaction.category = document.querySelector('#select-category-transaction').querySelector('.active').querySelector('.category-transaction').value;
-      
-      this.handleTransaction.updateTransaction(index, bufferTransaction);
-      this.updateTable();
-      this.clearFieldsForm();
-    }
+    
   }
 
   updateTable() {
